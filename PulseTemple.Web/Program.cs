@@ -1,0 +1,27 @@
+using PulseTemple.Infrastructure.Extensions;
+using PulseTemple.Infrastructure.Persistence;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
+
+var app = builder.Build();
+
+await PersistenceInitializer.InitializeAsync(app.Services, app.Environment);
+
+app.UseHsts();
+app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapStaticAssets();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
+app.Run();

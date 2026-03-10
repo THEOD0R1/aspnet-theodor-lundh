@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="PulseTemple.Application/PulseTemple.Application.csproj" Id="96c8971f-206a-40e2-bb43-7b6e9ee56e57" />
+  <Project Path="PulseTemple.Domain/PulseTemple.Domain.csproj" Id="8bb7b637-f6ba-4c6c-ab7e-39edef3199c5" />
+  <Project Path="PulseTemple.Infrastructure/PulseTemple.Infrastructure.csproj" Id="de9748dc-24f5-48c2-a124-3464f9e2898f" />
+  <Project Path="PulseTemple.Tests/PulseTemple.Tests.csproj" Id="fb870358-0288-4807-bb8b-adcd9bfdeebc" />
+  <Project Path="PulseTemple.Web/PulseTemple.Web.csproj" />
+</Solution>
