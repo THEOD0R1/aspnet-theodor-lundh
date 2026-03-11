@@ -2,7 +2,7 @@
 
 namespace PulseTemple.Web.Controllers;
 
-public class HomeController : Controller
+public class TrainingController : Controller
 {
     public IActionResult Index()
     {

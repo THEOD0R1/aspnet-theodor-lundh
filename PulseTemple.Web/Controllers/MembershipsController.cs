@@ -2,7 +2,9 @@
 
 namespace PulseTemple.Web.Controllers;
 
-public class HomeController : Controller
+[Route("[controller]")]
+
+public class MembershipsController : Controller
 {
     public IActionResult Index()
     {
