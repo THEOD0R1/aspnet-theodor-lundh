@@ -172,7 +172,7 @@ footer {
     padding: 3rem 4rem;
     border-radius: 20px;
     background-color: var(--footer-bg-color);
-    background-image: url(../images/dark-section-img.png);
+    background-image: url(/images/dark-section-img-bg.png);
     background-repeat: no-repeat;
     background-size: 100%;
     color: var(--white-color);
