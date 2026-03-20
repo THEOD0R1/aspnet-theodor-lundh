@@ -3,9 +3,10 @@ using PulseTemple.Web.Attributes.MenuNavigation;
 
 namespace PulseTemple.Web.Controllers;
 
-public class HomeController : Controller
+public class CustomerServiceController : Controller
 {
-    [HideInMenu]
+    [HttpGet]
+    [MenuItem("Customer Service", 4)]
     public IActionResult Index()
     {
         return View();

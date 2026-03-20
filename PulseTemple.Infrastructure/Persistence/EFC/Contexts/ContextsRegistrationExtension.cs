@@ -2,10 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PulseTemple.Infrastructure.Persistence.Models;
+using PulseTemple.Infrastructure.Extensions.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace PulseTemple.Infrastructure.Persistence.EFC.Contexts;
+namespace PulseTemple.Infrastructure.Extensions.EFC.Contexts;
 
 public static class ContextsRegistrationExtension
 {

@@ -1,97 +1,28 @@
-﻿<header class="header">
+﻿
     <section class="header-section">
         <div class="header-logo">
             <a class="header-logo-link" href="/">
-                <img src="./images/PulseTemplePNG.PNG"
-                     alt="PulseTemple Logo" />PulseTemple
+                <img src="~/images/PulseTemplePNG.PNG"
+                     alt="PulseTemple Logo" />
+            <span class="header-company-name">PulseTemple</span>
             </a>
         </div>
-        <nav class="main-nav">
-            <ul class="main-menu">
-                <li>
-                    <a class="menu-item"
-                       asp-controller="FitnessCenters"
-                       asp-action="Index">Fitness Centers</a>
-                </li>
-                <li>
-                    <a class="menu-item"
-                       asp-controller="Memberships"
-                       asp-action="Index">Memberships</a>
-                </li>
-                <li>
-                    <a class="menu-item"
-                       asp-controller="Memberships"
-                       asp-action="Index">Training</a>
-                </li>
-                <li>
-                    <a class="menu-item"
-                       asp-controller="Contacts"
-                       asp-action="Index">Customer Service</a>
-                </li>
-                <li>
-                    <a class="menu-item" asp-controller="Store" asp-action="Index">Store</a>
-                </li>
-            </ul>
+        <nav id="mainNav" class="main-nav">
+            <partial name="Partials/Headers/_HeaderMenuList" />
         </nav>
+        <button aria-label="Menu button" id="menuBtn">
+            Menu
+        </button>
         <nav class="account-nav">
             <ul class="account-menu">
-                <li>
+            <li class="account-menu-sign-up">
                     <a asp-controller="Auth" asp-action="SignUp" class="menu-item">Become Member</a>
                 </li>
                 <li>
                     <a asp-controller="Auth" asp-action="SignIn" class="primary-btn">
                         Sign In
-                        <img src="./images/arrow-prev-small-svgrepo-com.svg"
-                             alt="arrow-image"
-                             class="arrow-img" />
                     </a>
                 </li>
             </ul>
         </nav>
     </section>
-    <section class="header-hero-section">
-        <div class="line-hero"></div>
-        <section class="header-hero-section-article">
-            <div>
-                <span class="small-title">
-                    <span class="green-circle-icon"></span> Strong Body. Strong
-                    Mind.
-                </span>
-            </div>
-            <h1 class="h1-title">Build Strength Boost Confidence Today!</h1>
-            <p>
-                Begin your fitness journey with expert trainers, modern equipment,
-                and a supportive environment designed to help you build streangth
-                and confidence.
-            </p>
-            <ul class="achievement-list">
-                <li class="achievement-item">
-                    <img src="./images/check.png" alt="check mark" />
-                    <span>Transform your body with training</span>
-                </li>
-                <li class="achievement-item">
-                    <img src="./images/check.png" alt="check mark" />
-                    <span>Personal training for real results</span>
-                </li>
-                <li class="achievement-item">
-                    <img src="./images/check.png" alt="check mark" />
-                    <span>Build confidence through fitness</span>
-                </li>
-                <li class="achievement-item">
-                    <img src="./images/check.png" alt="check mark" />
-                    <span>Fitness tailored to your goals</span>
-                </li>
-            </ul>
-            <div class="line"></div>
-            <a class="primary-btn" href="/">
-                Get Started
-                <img src="./images/arrow-prev-small-svgrepo-com.svg"
-                     alt="arrow-image"
-                     class="arrow-img" />
-            </a>
-        </section>
-        <section class="header-hero-section-img-container">
-            <img src="./images/hero-image.png" alt="" />
-        </section>
-    </section>
-</header>
