@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PulseTemple.Infrastructure.Persistence.EFC.Contexts;
+using PulseTemple.Infrastructure.Extensions.EFC.Contexts;
 
 #nullable disable
 

@@ -1,0 +1,28 @@
+﻿
+    <section class="header-section">
+        <div class="header-logo">
+            <a class="header-logo-link" href="/">
+                <img src="~/images/PulseTemplePNG.PNG"
+                     alt="PulseTemple Logo" />
+            <span class="header-company-name">PulseTemple</span>
+            </a>
+        </div>
+        <nav id="mainNav" class="main-nav">
+            <partial name="Partials/Headers/_HeaderMenuList" />
+        </nav>
+        <button aria-label="Menu button" id="menuBtn">
+            Menu
+        </button>
+        <nav class="account-nav">
+            <ul class="account-menu">
+            <li class="account-menu-sign-up">
+                    <a asp-controller="Auth" asp-action="SignUp" class="menu-item">Become Member</a>
+                </li>
+                <li>
+                    <a asp-controller="Auth" asp-action="SignIn" class="primary-btn">
+                        Sign In
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>

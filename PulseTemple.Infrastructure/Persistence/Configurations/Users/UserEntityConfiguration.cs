@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PulseTemple.Infrastructure.Persistence.Models;
+using PulseTemple.Infrastructure.Extensions.Models;
 
-namespace PulseTemple.Infrastructure.Persistence.Configurations.Users;
+namespace PulseTemple.Infrastructure.Extensions.Configurations.Users;
 
 public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
 {

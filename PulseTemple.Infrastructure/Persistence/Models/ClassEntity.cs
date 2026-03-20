@@ -1,4 +1,4 @@
-﻿namespace PulseTemple.Infrastructure.Persistence.Models;
+﻿namespace PulseTemple.Infrastructure.Extensions.Models;
 
 public sealed class ClassEntity
 {
