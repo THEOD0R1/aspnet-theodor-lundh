@@ -14,19 +14,20 @@
     <link rel="stylesheet" href="~/PulseTemple.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <div>
-            <header class="header">
-                <partial name="Partials/Headers/_HeaderSection" />
+    <div class="app-layout">
+        <header class="header">
+            <partial name="Partials/Headers/_HeaderSection" />
 
-                @if (IsSectionDefined("HeaderHero"))
-                    @RenderSection("HeaderHero", required: false)
-            </header>
+            @if (IsSectionDefined("HeaderHero"))
+                @RenderSection("HeaderHero", required: false)
+        </header>
             
         <main>
             @RenderBody()
         </main>
-        <footer>
 
+        <footer>
+            <partial name="Partials/Footers/_FooterSection" />
         </footer>
     </div>
     <script src="~/js/site.js" asp-append-version="true"></script>
