@@ -13,20 +13,24 @@ builder.Services.AddControllersWithViews(options =>
 builder.Services.AddRouting(options =>
     options.LowercaseUrls = true);
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-{
-    options.Cookie.Name = "PulseTemple.Auth";
-    options.ExpireTimeSpan = TimeSpan.FromHours(1);
-    options.SlidingExpiration = true;
-    
-    options.LoginPath = "/authentication/signin";
-    options.AccessDeniedPath = "/error/accessdenied";
-    options.LogoutPath = "/";
-});
-
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/sign-in";
+    options.LogoutPath = "/";
+    options.AccessDeniedPath = "/error/accessdenied";
+
+    options.Cookie.Name = "PulseTemple.Auth";
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+    options.SlidingExpiration = true;
+
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Strict;
+});
+
 builder.Services.AddScoped<IMenuNavigationService, MenuNavigationService>();
 
 var app = builder.Build();

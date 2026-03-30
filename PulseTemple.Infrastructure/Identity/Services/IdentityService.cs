@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PulseTemple.Application.Abstractions.Services;
 using PulseTemple.Application.Abstractions.Users;
 using PulseTemple.Application.Dtos;
@@ -8,20 +9,32 @@ namespace PulseTemple.Infrastructure.Identity.Services;
 
 public class IdentityService(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, RoleManager<RoleEntity> roleManager) : IIdentityService
 {
-    public Task<bool> DeleteByIdAsync(Guid userId)
+    public async Task<bool> DeleteByIdAsync(Guid userId)
     {
-        throw new NotImplementedException();
+        if (userId == Guid.Empty)
+            throw new ArgumentNullException(nameof(userId));
+
+        var user = await userManager.FindByIdAsync(userId.ToString());
+        if (user is null)
+            return false;
+
+        var deleteResult = await userManager.DeleteAsync(user);
+
+        if(!deleteResult.Succeeded)
+            return false;
+
+        return deleteResult.Succeeded;
     }
 
-    public Task<bool> FindExistingEmailAsync(string email)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<bool> FindExistingEmailAsync(string email)
+        => await userManager.Users.AnyAsync(x => x.Email == email);
 
-    public Task<string?> GetByEmailAsync(Guid userId)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<string?> GetByEmailAsync(Guid userId)
+        => await userManager.Users
+            .AsNoTracking()
+            .Where(x => x.Id == userId)
+            .Select(x => x.Email)
+            .FirstOrDefaultAsync();
 
     public Task<string?> GetByPhoneNumberAsync(Guid userId)
     {
@@ -44,15 +57,20 @@ public class IdentityService(UserManager<UserEntity> userManager, SignInManager<
             );
     }
 
-    public Task<bool> LoginAsync(string email, string password, bool rememberMe, bool lockoutOnFailure = false)
+    public async Task<bool> LoginAsync(string email, string password, bool rememberMe, bool lockoutOnFailure = false)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(email))
+            throw new ArgumentNullException(nameof(email));
+
+        if (string.IsNullOrWhiteSpace(password))
+            throw new ArgumentNullException(nameof(password));
+
+        var signInResult = await signInManager.PasswordSignInAsync(email, password, rememberMe, lockoutOnFailure);
+        return signInResult.Succeeded;
     }
 
-    public Task LogoutAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task LogoutAsync()
+        => await signInManager.SignOutAsync();
 
     public async Task<RegisterResult> RegisterAsync(string email, string password, string? roleName = "Member")
     {
