@@ -32,6 +32,7 @@
     --light-color: #f7f7f7;
     --white-color: #ffffff;
     --black-color: #000000;
+    --faded-gray: #575757;
     --default-bg-color: var(--light-color);
     --default-text-color: var(--dark-color);
     --header-bg-color: var(--dark-blue);
@@ -829,4 +830,52 @@ header {
     font-size: 0.84rem; 
     width: 100%;
 
+}
+
+/* =========================================
+    Not found
+========================================= */
+
+.not-found-section{
+    width:100%;
+    min-height: 80dvh;
+    padding:0.7rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 45rem;
+    
+    @media(800px <= width) {
+        gap: clamp(1.5rem, 3vw, 3rem);
+    }
+}
+.not-found-image{
+
+}
+.not-found-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 1rem;
+}
+.not-found-title {
+    font-size: 2rem;
+
+    @media(800px <= width) {
+        font-size: clamp(2rem, 5vw, 4rem);
+    }
+}
+.not-found-description {
+    color: var(--faded-gray);
 }
