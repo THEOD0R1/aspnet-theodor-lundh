@@ -4,6 +4,7 @@ using PulseTemple.Application.Abstractions.Services;
 using PulseTemple.Application.Abstractions.Users;
 using PulseTemple.Web.Attributes.MenuNavigation;
 using PulseTemple.Web.Models.Authentications.Register;
+using PulseTemple.Web.Models.Authentications.Register.Password;
 
 namespace PulseTemple.Web.Controllers;
 
@@ -16,6 +17,11 @@ public class AuthenticationController(IIdentityService auth) : Controller
     [AllowAnonymous]
     public IActionResult SignUp()
     {
+        var redirect = RedirectWhenLoggedIn;
+
+        if (redirect != null)
+            return redirect;
+
         return View();
     }
 
@@ -32,6 +38,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
     }
 
     [HideInMenu]
+    [AllowAnonymous]
     [HttpGet("set-password")]
     public IActionResult SetPassword()
     {
@@ -43,6 +50,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
     }
 
     [HttpPost("set-password")]
+    [AllowAnonymous]
     public async Task<IActionResult> SetPassword(SetPasswordForm form)
     {
         var email = HttpContext.Session.GetString(RegisterEmailSessionKey);
@@ -61,16 +69,58 @@ public class AuthenticationController(IIdentityService auth) : Controller
             return View(form);
         }
 
-        Console.Write(result);
-
         return RedirectToAction(nameof(SignIn));
     }
 
     [HideInMenu]
+    [AllowAnonymous]
     [HttpGet("sign-in")]
     public IActionResult SignIn()
     {
         return View();
+    }
+
+    [HttpPost("sign-in")]
+    [ValidateAntiForgeryToken]
+    [AllowAnonymous]
+    public async Task<IActionResult> SignIn(LoginForm form)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewData["ErrorMessage"] = "Incorrect email or password";
+            return View(form);
+        }
+
+        var loggedIn = await auth.LoginAsync(form.Email, form.Password, form.RememberMe, true);
+        if (!loggedIn)
+        {
+            ViewData["ErrorMessage"] = "Incorrect email or password";
+            return View(form);
+        }
+        
+        return RedirectToAction("Index", "Profile");
+    }
+    [HttpPost]
+    public new async Task<IActionResult> SignOut()
+    {
+        await auth.LogoutAsync();
+        return RedirectToAction("Index", "Home");
+    }
+
+    private IActionResult? RedirectWhenLoggedIn
+    {
+        get
+        {
+            if (User.Identity?.IsAuthenticated == false) return null;
+            
+            if (User.IsInRole("Admin"))
+                return RedirectToAction("Index", "AdminDashboard");
+
+            if (User.IsInRole("Member"))
+                return RedirectToAction("Index", "Profile");
+
+            return null;
+        }
     }
 
 }

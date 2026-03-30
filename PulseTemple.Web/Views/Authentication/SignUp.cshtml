@@ -14,6 +14,7 @@
 }
 
 <section class="sign-up">
+
     <div class="sign-up-container">
         <partial name="Partials/Authentications/_ExternallLogins" model="@externallLoginData"/>
 
@@ -25,7 +26,13 @@
                 <span class="warning" asp-validation-for="Email"></span>
             </div>
 
-            <button type="submit" class="primary-btn">Continue</button>
+            <button type="submit" class="primary-btn wider-btn">Continue</button>
+            @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+            {
+                <div class="field-validation-error">
+                    @ViewData["ErrorMessage"]?.ToString()
+                </div>
+            }
         </form>
         <p class="sign-up-notice">We will send a verification code to your email address.</p>
 

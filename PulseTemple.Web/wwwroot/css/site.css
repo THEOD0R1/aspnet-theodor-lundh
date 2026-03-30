@@ -217,11 +217,16 @@ footer {
     accent-color: var(--light-color);
     transform: scale(1.25);
 }
+.field-validation-error{
+    color: red;
+}
 .warning {
     color: red;
     font-size: 0.875rem;
 }
-
+.wider-btn{
+    width:20rem !important;
+}
 .primary-hr {
     background-color: var(--primary-color);
     opacity: 0.2;

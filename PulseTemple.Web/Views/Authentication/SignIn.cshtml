@@ -1,3 +1,49 @@
-﻿@{
+﻿@using PulseTemple.Web.Models.Authentications.Register;
+@using PulseTemple.Web.Models.Authentications;
+
+@model LoginForm
+
+@{
+    Layout = "Layouts/_AuthLayout";
+
     ViewData["Title"] = "Sign In";
+
+    var authTextBlockTitle = new AuthTextBlockViewModel("Welcome Back!", "Log in to continue your fitness journey with full access to your customized program, training history, and progress tracking. Stay consistent, monitor your development, and keep moving forward with the structure and support built into your account.");
+
+    var externallLoginData = new ExternallLoginsViewModel(authTextBlockTitle);
 }
+<section class="sign-in">
+
+    <div class="sign-up-container">
+        <partial name="Partials/Authentications/_ExternallLogins" model="@externallLoginData" />
+
+        <form id="sign-in-form" method="post" asp-action="SignIn" asp-controller="Authentication" class="sign-up-form" novalidate>
+            <div class="sign-up-input-container">
+                <label class="sign-up-email-label" asp-for="Email"></label>
+                <input autocomplete="off" class="sign-up-email-input" asp-for="Email" />
+                <span class="warning" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="sign-up-input-container">
+                <label class="sign-up-email-label" asp-for="Password">Password</label>
+                <input autocomplete="off" class="sign-up-email-input" asp-for="Password" />
+                <span class="warning" asp-validation-for="Password"></span>
+            </div>
+
+            <button type="submit" class="primary-btn wider-btn">Continue</button>
+
+            <div class="accept-user-terms-container">
+                <input class="accept-user-terms-input" type="checkbox" asp-for="RememberMe" />
+                <label asp-for="RememberMe" class="sign-up-notice"></label>
+            </div>
+            <span class="warning" asp-validation-for="RememberMe"></span>
+            @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+            {
+                <div class="field-validation-error">
+                    @ViewData["ErrorMessage"]?.ToString()
+                </div>
+            }
+        </form>
+
+    </div>
+</section>
