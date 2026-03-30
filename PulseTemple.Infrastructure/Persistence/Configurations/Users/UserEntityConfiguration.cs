@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PulseTemple.Infrastructure.Extensions.Models;
+using PulseTemple.Infrastructure.Persistence.Models;
 
-namespace PulseTemple.Infrastructure.Extensions.Configurations.Users;
+namespace PulseTemple.Infrastructure.Persistence.Configurations.Users;
 
 public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
 {
@@ -10,8 +10,8 @@ public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntit
     {
         builder.ToTable("Users");
 
-        builder.Property(e => e.FirstName).HasMaxLength(100).IsRequired();
-        builder.Property(e => e.LastName).HasMaxLength(100).IsRequired();
+        builder.Property(e => e.FirstName).HasMaxLength(100);
+        builder.Property(e => e.LastName).HasMaxLength(100);
         
         builder.Property(e => e.MembershipId).IsRequired(false);
 
@@ -23,4 +23,3 @@ public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntit
        .OnDelete(DeleteBehavior.SetNull);
     }
 }
-

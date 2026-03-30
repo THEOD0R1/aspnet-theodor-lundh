@@ -27,6 +27,7 @@
     --dark-color: #27252f;
     --dark-blue: #131020;
     --gray-color: #6f6f6f;
+    --light-gray: #E6E6E6;
     --primary-color: #d6eb31;
     --light-color: #f7f7f7;
     --white-color: #ffffff;
@@ -135,6 +136,19 @@ a {
     grid-template-rows: auto 1fr auto;
     min-height: 100dvh;
 }
+.auth-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    height: 100dvh;
+    padding: 1rem;
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 .container {
     width: 100%;
@@ -193,8 +207,22 @@ footer {
 /* =========================================
     Shared Components
 ========================================= */
+.accept-user-terms-container{
+    display: flex;
+    gap:0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+.accept-user-terms-input {
+    accent-color: var(--light-color);
+    transform: scale(1.25);
+}
+.warning {
+    color: red;
+    font-size: 0.875rem;
+}
 
-.primary-hr{
+.primary-hr {
     background-color: var(--primary-color);
     opacity: 0.2;
     width: 100%;
@@ -239,6 +267,7 @@ footer {
 
     @media (width <= 800px){
         padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
     }
 
     &::after {
@@ -653,4 +682,146 @@ header {
         display: flex;
         justify-content: center;
     }
+}
+/* =========================================
+   AuthTextBlock
+========================================= */
+.auth-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.auth-text-block-title {
+    color: var(--black-color);
+    font-size: 2.45rem; 
+    margin: 0;
+
+    @media (width <= 600px) {
+        font-size: 1.4rem;
+    }
+}
+
+.auth-text-block-description {
+    color: var(--gray-color);
+}
+
+/* =========================================
+   ExternallLogins
+========================================= */
+.externall-logins {
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+
+    @media (width <= 600px) {
+        gap: 1.4rem; 
+    }
+}
+
+.externall-logins-divider {
+    border: none;
+    background-color: var(--light-gray);
+    height: 1px;
+    width: 100%;
+    margin: 0;
+}
+
+.externall-logins-list {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem; 
+
+    @media (width <= 600px) {
+        gap: 0.35rem; 
+    }
+}
+
+.externall-logins-item {
+    border-radius: 700px;
+    width: 42px;
+    border: solid 1px var(--gray-color);
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+
+    @media (width <= 600px) {
+        width: 2.1rem;
+    }
+}
+
+.externall-logins-divider-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.externall-logins-continue-text {
+    color: var(--gray-color);
+    white-space: nowrap;
+}
+
+/* =========================================
+   Sign up
+========================================= */
+.sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.sign-up-container {
+    background-color: var(--white-color);
+    align-items: center;
+    border-radius: 14px;
+    max-width: 581px; 
+    padding: 1.75rem; 
+    display: flex;
+    flex-direction: column;
+    gap: 0.84rem; 
+
+    @media (width <= 600px) {
+        gap: 0.7rem; 
+        padding: 1.4rem; 
+    }
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.84rem;
+    align-items: center;
+    width: 100%;
+
+    @media (width <= 600px) {
+        gap: 0.7rem;
+    }
+}
+
+.sign-up-input-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.42rem;
+    color: var(--dark-color);
+}
+
+.sign-up-email-label {
+    font-size: 0.8rem; 
+    font-weight: 700;
+
+    &:after {
+        content: "*";
+    }
+}
+
+.sign-up-email-input {
+    border: none;
+    border-radius: 5px; 
+    background-color: var(--light-color);
+    padding: 0.7rem 1.05rem;
+    font-size: 0.84rem; 
+    width: 100%;
+
 }

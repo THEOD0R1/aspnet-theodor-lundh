@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PulseTemple.Infrastructure.Extensions.Models;
+using PulseTemple.Infrastructure.Persistence.Models;
+using PulseTemple.Infrastructure.Persistence.Models;
 
-namespace PulseTemple.Infrastructure.Extensions.EFC.Contexts;
+namespace PulseTemple.Infrastructure.Persistence.EFC.Contexts;
 
 public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<UserEntity, RoleEntity, Guid>(options)
 {

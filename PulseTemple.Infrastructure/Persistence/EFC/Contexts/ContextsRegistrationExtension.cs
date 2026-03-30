@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PulseTemple.Infrastructure.Extensions.Models;
-using Microsoft.AspNetCore.Identity;
+using PulseTemple.Application.Abstractions.Services;
+using PulseTemple.Infrastructure.Identity.Services;
+using PulseTemple.Infrastructure.Persistence.Models;
 
-namespace PulseTemple.Infrastructure.Extensions.EFC.Contexts;
+namespace PulseTemple.Infrastructure.Persistence.EFC.Contexts;
 
 public static class ContextsRegistrationExtension
 {
@@ -15,7 +17,10 @@ public static class ContextsRegistrationExtension
         ArgumentNullException.ThrowIfNull(configuration);
         ArgumentNullException.ThrowIfNull(env);
 
-        if (env.IsDevelopment())
+        bool isMigration = AppDomain.CurrentDomain.GetAssemblies()
+            .Any(a => a.FullName?.Contains("Microsoft.EntityFrameworkCore.Design") == true);
+
+        if (env.IsDevelopment() && !isMigration)
             services.AddDbContext<DataContext>(options =>
                 options.UseInMemoryDatabase("PulseTempleDevDb"));
         else
@@ -27,10 +32,16 @@ public static class ContextsRegistrationExtension
             options.Password.RequireDigit = true;
             options.Password.RequiredLength = 8;
             options.User.RequireUniqueEmail = true;
+
+            options.SignIn.RequireConfirmedAccount = false;
+            options.SignIn.RequireConfirmedEmail = false;
+            options.SignIn.RequireConfirmedPhoneNumber = false;
         })
         .AddRoles<RoleEntity>()
         .AddEntityFrameworkStores<DataContext>()
         .AddDefaultTokenProviders();
+
+        services.AddScoped<IIdentityService, IdentityService>();
 
         return services;
     }

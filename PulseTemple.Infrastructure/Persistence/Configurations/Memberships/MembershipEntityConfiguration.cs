@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PulseTemple.Infrastructure.Extensions.Models;
+using PulseTemple.Infrastructure.Persistence.Models;
 
-namespace PulseTemple.Infrastructure.Extensions.Configurations.Memberships;
+namespace PulseTemple.Infrastructure.Persistence.Configurations.Memberships;
 
 public sealed class MembershipEntityConfiguration : IEntityTypeConfiguration<MembershipEntity>
 {
