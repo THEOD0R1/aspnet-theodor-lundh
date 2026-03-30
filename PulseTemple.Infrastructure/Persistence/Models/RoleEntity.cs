@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace PulseTemple.Infrastructure.Extensions.Models;
+namespace PulseTemple.Infrastructure.Persistence.Models;
 
 public sealed class RoleEntity : IdentityRole<Guid>
 {

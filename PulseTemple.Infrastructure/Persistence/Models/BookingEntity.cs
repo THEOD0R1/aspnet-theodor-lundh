@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using PulseTemple.Infrastructure.Persistence.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PulseTemple.Infrastructure.Extensions.Models;
+namespace PulseTemple.Infrastructure.Persistence.Models;
 
 public sealed class BookingEntity
 {

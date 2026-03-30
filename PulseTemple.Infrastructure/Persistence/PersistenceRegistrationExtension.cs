@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PulseTemple.Infrastructure.Extensions.EFC.Contexts;
+using PulseTemple.Infrastructure.Persistence.EFC.Contexts;
 
 namespace PulseTemple.Infrastructure.Persistence;
 
