@@ -228,6 +228,7 @@ footer {
         flex-direction: row;
         max-width: 1320px;
         margin: 1rem;
+        gap: 3rem;
     }
 }
 
