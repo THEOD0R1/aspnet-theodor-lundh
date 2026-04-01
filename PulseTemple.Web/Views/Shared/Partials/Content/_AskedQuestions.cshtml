@@ -1,0 +1,84 @@
+﻿@using PulseTemple.Web.Models.Dropdowns;
+@{
+    IReadOnlyCollection<DropdownItem> faqData = [
+    new DropdownItem(
+        "Q1.", 
+        "Do I need prior gym experience to Join CoreFitness?", 
+        new DropdownContent(
+            "No, GymPro is designed for all fitness levels. Our trainers guide beginners with proper techniques and structured workout plans to help them start safely and confidently.",
+            [
+                "Every new member receives a personalized introduction to equipments",
+                "Workouts are designed to grow with you, ensuring beginners can start safely."
+            ]
+        )
+    ),
+    new DropdownItem(
+        "Q2.", 
+        "What facilities are included with the membership?", 
+        new DropdownContent(
+            "Our membership provides full access to our state-of-the-art facility designed to support your total fitness journey.",
+            [
+                "High-end cardio and strength training equipment",
+                "Clean locker rooms with sauna and shower facilities",
+                "Dedicated zones for functional training and stretching"
+            ]
+        )
+    ),
+    new DropdownItem(
+        "Q3.", 
+        "Can I try the gym before taking a membership?", 
+        new DropdownContent(
+            "Yes! We offer a complimentary one-day pass for local residents so you can experience our community and equipment firsthand.",
+            [
+                "Free 24-hour trial pass available upon request",
+                "No commitment required for your first visit",
+                "Access to one group class during your trial"
+            ]
+        )
+    ),
+    new DropdownItem(
+        "Q4.", 
+        "Are there group workout programs available?", 
+        new DropdownContent(
+            "Absolutely. We believe in the power of community. Our group classes are led by certified instructors who keep you motivated.",
+            [
+                "Daily sessions of HIIT, Yoga, and Zumba",
+                "Small group personal training for focused attention",
+                "Monthly fitness challenges for all members"
+            ]
+        )
+    ),
+    new DropdownItem(
+        "Q5.", 
+        "Is nutrition guidance included in the plans?", 
+        new DropdownContent(
+            "We take a holistic approach to health. While basic guidance is included, we also offer specialized nutrition coaching.",
+            [
+                "Initial nutrition consultation for all new members",
+                "Access to our healthy recipe database",
+                "Optional 1-on-1 meal planning with certified nutritionists"
+            ]
+        )
+    )
+];
+}
+
+<section class="asked-questions">
+    <div class="asked-questions-img-container">
+        <img
+            class="asked-questions-img"
+            src="/images/faqs-image.png"
+            alt="Strong man holding barbell"
+        />
+    </div>
+    <article class="asked-questions-main-content">
+        <span class="small-title">
+            <span class="green-circle-icon"></span> Frequently Asked
+            Questions</span
+        >
+        <h2 class="asked-questions-title">
+            Common questions about gym and training
+        </h2>
+        <partial name="Partials/Widgets/_Dropdown" model="@faqData" />
+    </article>
+</section>

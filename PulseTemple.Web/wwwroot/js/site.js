@@ -1,4 +1,6 @@
-﻿const btn = document.getElementById('menuBtn');
+﻿// Header
+
+const btn = document.getElementById('menuBtn');
 const menu = document.getElementById('mainNav');
 const links = document.querySelectorAll(".menu-item");
 
@@ -16,3 +18,17 @@ btn.addEventListener('click', () => {
     });
 });
 
+// Dropdown functionality for the FAQ section
+
+
+function showDropdown(index, id) {
+    if (!Number.isInteger(index)) return;
+    if (!id) return;
+
+    const dropdownContent = document.querySelectorAll(`.dropdown-content-${id}`);
+    var btn = document.getElementById(`dropdown-btn-${index}-${id}`);
+    const dropdown = dropdownContent[index];
+
+    dropdown?.classList.toggle("dropdown-content-open");
+    btn?.classList.toggle("active-dropdown-btn");
+}
