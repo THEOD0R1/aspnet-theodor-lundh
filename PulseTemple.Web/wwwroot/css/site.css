@@ -433,6 +433,8 @@ footer {
     @media (width <= 768px) {
         flex-direction: column-reverse;
         gap: 3rem;
+        padding:1rem;
+        margin: 0 0.5rem;
     }
 }
 
