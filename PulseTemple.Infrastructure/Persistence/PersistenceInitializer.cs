@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PulseTemple.Infrastructure.Identity.data;
 using PulseTemple.Infrastructure.Persistence.EFC.Contexts;
-using Microsoft.EntityFrameworkCore;
 
 namespace PulseTemple.Infrastructure.Persistence;
 
@@ -24,5 +25,9 @@ public static class PersistenceInitializer
             var context = scope.ServiceProvider.GetRequiredService<DataContext>();
             await context.Database.MigrateAsync(ct);
         }
+
+        await IdentityInitializer.InitilizeDefaultRolesAsync(serviceProvider);
+        await IdentityInitializer.InitilizeDefaultAdminAccountsAsync(serviceProvider);
+        await IdentityInitializer.InitilizeDefaultMemberAccountsAsync(serviceProvider);
     }
 }

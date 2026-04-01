@@ -53,7 +53,7 @@ public class IdentityService(UserManager<UserEntity> userManager, SignInManager<
             LastName: user?.LastName,
             Email: user?.Email,
             PhoneNumber: user?.PhoneNumber,
-            Membership: null 
+            Membership: null
             );
     }
 

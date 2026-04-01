@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PulseTemple.Infrastructure.Identity.data;
 using PulseTemple.Infrastructure.Persistence;
 
 namespace PulseTemple.Infrastructure.Extensions;
