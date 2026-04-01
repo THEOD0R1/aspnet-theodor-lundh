@@ -30,6 +30,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
     [ValidateAntiForgeryToken]
     public IActionResult SignUp(RegisterEmailForm form)
     {
+
         if (!ModelState.IsValid)
             return View(form);
 
@@ -77,6 +78,11 @@ public class AuthenticationController(IIdentityService auth) : Controller
     [HttpGet("sign-in")]
     public IActionResult SignIn()
     {
+        var redirect = RedirectWhenLoggedIn;
+
+        if (redirect != null)
+            return redirect;
+
         return View();
     }
 
@@ -111,6 +117,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
     {
         get
         {
+            Console.WriteLine("test:" + User.Identity?.IsAuthenticated);
             if (User.Identity?.IsAuthenticated == false) return null;
             
             if (User.IsInRole("Admin"))

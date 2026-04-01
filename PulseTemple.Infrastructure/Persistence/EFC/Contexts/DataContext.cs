@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PulseTemple.Infrastructure.Persistence.Models;
-using PulseTemple.Infrastructure.Persistence.Models;
 
 namespace PulseTemple.Infrastructure.Persistence.EFC.Contexts;
 
