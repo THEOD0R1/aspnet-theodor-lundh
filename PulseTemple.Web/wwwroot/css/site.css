@@ -482,10 +482,10 @@ footer {
     line-height: 1.2;
     text-align: center;
     max-width: 740px;
+    margin: 0;
 
     @media (width <= 768px) {
         font-size: 2.5rem;
-        margin: 0;
     }
 }
 
