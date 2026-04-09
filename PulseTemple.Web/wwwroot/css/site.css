@@ -218,9 +218,60 @@ footer {
     Shared Components
 ========================================= */
 
+/* Phone icon */
+
+.phone-icon {
+    position:relative;
+    display: inline-block;
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.4rem;
+
+    &::before {
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        position:absolute;
+        font-family: "Font Awesome 7 Pro";
+        font-size: 1rem;
+        color: var(--black-color);
+        content: "\f2a0";
+    }
+}
+/* Email icon */
+
+.email-icon {
+    position: relative;
+    display: inline-block;
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.4rem;
+
+    &::before {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        font-family: "Font Awesome 7 Pro";
+        font-size: 1rem;
+        color: var(--black-color);
+        content: "\f0e0";
+    }
+}
 
 /* Questions About Gym */
-
 .asked-questions {
     display: flex;
     flex-direction: column;
@@ -275,7 +326,7 @@ footer {
     flex-direction: column;
     gap: 0.25rem;
     position: relative;
-    z-index: 100;
+    z-index: 50;
 }
 
 .dropdown-hr {
@@ -574,7 +625,7 @@ footer {
     white-space: nowrap;
     font-weight: 700;
     border-radius: 1000px;
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -583,7 +634,7 @@ footer {
     transition: transform var(--header-color-hover-duration) ease-out;
 
     @media (width <= 800px){
-        padding: 0.4rem 0.6rem;
+        padding: 0.5rem 0.7rem;
         font-size: 0.9rem;
     }
 
@@ -792,7 +843,7 @@ header {
         width: 100%;
         height: 100dvh;
         background-color: red;
-        z-index: 50;
+        z-index: 60;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -1132,6 +1183,16 @@ header {
         content: "*";
     }
 }
+.standard-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    &.asterix::after {
+        content: "*";
+    }
+}
+
+
 
 .sign-up-email-input {
     border: none;
@@ -1189,4 +1250,141 @@ header {
 }
 .not-found-description {
     color: var(--faded-gray);
+}
+
+/* =========================================
+    Contact Customer Service
+========================================= */
+
+.contact-customer-service {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    border-radius: 20px;
+    margin: 0.5rem;
+
+    @media(width >= 768px) {
+        max-width: 1320px;
+        margin: 1rem;
+        gap: 2rem;
+    }
+
+    @media(width >= 1040px) {
+        flex-direction: row;
+        max-height: 568px;
+        margin: 1rem;
+        gap:0;
+    }
+}
+.contact-customer-service-contact-info {
+    position: relative;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    @media(width >= 768px) {
+    
+    }
+
+    @media(width >= 1040px) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        max-width: 441px;
+        width: 100%;
+    }
+}
+.contact-customer-service-info-container-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-wrap: nowrap;
+}
+.contact-customer-service-main-img {
+    width: 100%;
+    height: auto;
+    max-height: 100dvh;
+
+
+    @media(900px <= width) {
+        min-width: 390px;
+        display: block;
+    }
+
+    object-fit: cover;
+}
+
+.contact-customer-service-info {
+    width:fit-content;
+    display:flex;
+    justify-content: space-between;
+    gap:1rem;
+    padding:1.5rem;
+    position: absolute;
+    z-index: 10;
+    color: var(--white-color);
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    backdrop-filter: blur(40px);
+    border-radius: 20px;
+
+    @media(width <= 768px){
+        flex-direction:column;
+        gap:2rem;
+    }
+    
+}
+
+.contact-customer-service-contact-section {
+    padding: 1rem;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media(width >= 768px) {
+        min-width: 508px;
+        padding: 0 3rem;
+    }
+}
+.contact-customer-service-contact-section-paragraph{
+    color:var(--gray-color);
+}
+.contact-customer-service-contact-section-title{
+    font-weight:700;
+    margin: 0;
+}
+.contact-customer-service-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media(width >= 768px) {
+        gap: 1.5rem;
+    }
+}
+
+.text-area {
+    height: 200px;
+    resize: none;
+
+    @media(width >= 768px) {
+        height: 100px;
+    }
+}
+
+.contact-customer-service-form-section {
+    display: flex;
+    gap: 0.5rem;
+
+    @media(width >= 768px) {
+        gap: 1.5rem;
+    }
+}
+.contact-customer-service-info-container{
+    display:flex;
+    gap:0.4rem;
+    align-items:center;
+    justify-content:center;
 }

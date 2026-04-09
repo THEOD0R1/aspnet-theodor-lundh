@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PulseTemple.Application.Abstractions.Services;
 using PulseTemple.Application.Abstractions.Users;
-using PulseTemple.Application.Dtos;
+using PulseTemple.Application.Dtos.Results;
 using PulseTemple.Infrastructure.Persistence.Models;
 
 namespace PulseTemple.Infrastructure.Identity.Services;

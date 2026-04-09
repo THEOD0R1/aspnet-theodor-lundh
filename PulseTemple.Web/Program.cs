@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using PulseTemple.Application.Extensions;
 using PulseTemple.Infrastructure.Extensions;
 using PulseTemple.Infrastructure.Persistence;
 using PulseTemple.Web.Routing;
@@ -15,6 +15,7 @@ builder.Services.AddRouting(options =>
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddApplication(builder.Configuration, builder.Environment);
 builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
 
 builder.Services.ConfigureApplicationCookie(options =>

@@ -1,0 +1,63 @@
+﻿@using PulseTemple.Web.Models.CustomerService
+
+@model ContactRequestForm
+
+<section class="contact-customer-service">
+    <section class="contact-customer-service-contact-info">
+        <img class="contact-customer-service-main-img" src="/images/contact-us-image.png" alt="Girl at the gym" />
+        <div class="contact-customer-service-info">
+            <div class="contact-customer-service-info-container">
+                <div class="phone-icon"></div>
+                <div class="contact-customer-service-info-container-contact">
+                    <b>Phone Number</b>
+                    <span>+(46) 8 410 521 00</span>
+                </div>
+            </div>
+            <div class="contact-customer-service-info-container">
+                <div class="email-icon"></div>
+                <div class="contact-customer-service-info-container-contact">
+                    <b>Email Address</b>
+                    <span>info@corefitness.se</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-customer-service-contact-section">
+        <h3 class="contact-customer-service-contact-section-title">Contact Us Today</h3>
+        <p class="contact-customer-service-contact-section-paragraph">
+            Ready to begin your fitness journey? Contact GymPro today and let our expert trainers guide you with the right program and support.
+        </p>
+        <form class="contact-customer-service-form" method="post" asp-action="Index" asp-controller="CustomerService" novalidate>
+            <section class="contact-customer-service-form-section">
+                <div class="sign-up-input-container">
+                    <label class="sign-up-email-label" asp-for="FirstName"></label>
+                    <input autocomplete="off" class="sign-up-email-input" asp-for="FirstName" />
+                    <span class="warning" asp-validation-for="FirstName"></span>
+                </div>
+                <div class="sign-up-input-container">
+                    <label class="sign-up-email-label" asp-for="LastName"></label>
+                    <input autocomplete="off" class="sign-up-email-input" asp-for="LastName" />
+                    <span class="warning" asp-validation-for="LastName"></span>
+                </div>
+            </section>
+            <section class="contact-customer-service-form-section">
+                <div class="sign-up-input-container">
+                    <label class="sign-up-email-label" asp-for="Email"></label>
+                    <input autocomplete="off" class="sign-up-email-input" asp-for="Email" />
+                    <span class="warning" asp-validation-for="Email"></span>
+                </div>
+                <div class="sign-up-input-container">
+                    <label class="standard-label" asp-for="Phone"></label>
+                    <input autocomplete="off" class="sign-up-email-input" asp-for="Phone" />
+                    <span class="warning" asp-validation-for="Phone"></span>
+                </div>
+            </section>
+                <div class="sign-up-input-container">
+                    <label class="sign-up-email-label" asp-for="Message"></label>
+                    <textarea autocomplete="off" class="sign-up-email-input text-area" asp-for="Message"></textarea>
+                    <span class="warning" asp-validation-for="Message"></span>
+                </div>
+            <button type="submit" class="primary-btn">Submit Message</button>
+        </form>
+    </section>
+</section>

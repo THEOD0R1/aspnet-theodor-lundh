@@ -15,4 +15,5 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<MembershipEntity> Memberships { get; set; }
     public DbSet<ClassEntity> Classes { get; set; }
     public DbSet<BookingEntity> Bookings { get; set; }
+    public DbSet<ContactRequestEntity> ContactRequests { get; set; }
 }
