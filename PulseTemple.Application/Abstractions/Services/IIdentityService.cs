@@ -1,5 +1,5 @@
 ﻿using PulseTemple.Application.Abstractions.Users;
-using PulseTemple.Application.Dtos;
+using PulseTemple.Application.Dtos.Results;
 
 namespace PulseTemple.Application.Abstractions.Services;
 

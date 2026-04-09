@@ -7,6 +7,9 @@ public abstract class RepositoryBase<TModel, TId, TEntity, TDbContext>(TDbContex
 {
     protected readonly TDbContext _context = context;
     protected DbSet<TEntity> Set => _context.Set<TEntity>();
+
+    protected abstract TId GetId(TModel model);
+    protected abstract void ApplyUpdates(TModel model, TEntity entity);
     protected abstract TEntity ToEntity(TModel model);
     protected abstract TModel ToModel(TEntity entity);
 

@@ -1,4 +1,4 @@
-﻿namespace PulseTemple.Application.Dtos;
+﻿namespace PulseTemple.Application.Dtos.Results;
 
 public record RegisterResult
     (
