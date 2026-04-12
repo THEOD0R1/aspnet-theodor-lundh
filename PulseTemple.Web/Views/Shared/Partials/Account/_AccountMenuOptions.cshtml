@@ -1,0 +1,28 @@
+﻿@using PulseTemple.Web.Models.Account
+@model AccountMenuOptionsViewModel
+@{
+    var itemsLength = Model.AccountOptionItems.Count;
+
+    var index = 0;
+}
+
+<nav class="account-menu-options">
+    <ul class="account-menu-options-list">
+        <li class="account-menu-options-title">@Model.Title</li>
+
+        @if (Model.AccountOptionItems != null)
+        {
+            @foreach(AccountMenuOptionItem item in Model.AccountOptionItems)
+            {
+                ++index;
+
+                var isActive = ViewContext.RouteData.Values["Action"]?.ToString() == item.Action &&
+                                 ViewContext.RouteData.Values["Controller"]?.ToString() == item.Controller;
+
+                <li class="account-menu-options-item @(isActive ? "account-menu-options-item-active" : "") @(index == itemsLength ? "account-menu-options-item-last" : "account-menu-options-item-border")">
+                    <a class="account-menu-options-item-link @(isActive ? "account-menu-options-item-active" : "")" asp-action="@item.Action" asp-controller="@item.Controller">@item.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</nav>

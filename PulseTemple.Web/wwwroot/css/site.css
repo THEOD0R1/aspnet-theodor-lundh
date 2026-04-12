@@ -26,6 +26,7 @@
 :root {
     --dark-color: #27252f;
     --dark-blue: #131020;
+    --dark-light-gray: #D9D9D9;
     --gray-color: #6f6f6f;
     --light-gray: #E6E6E6;
     --primary-color: #d6eb31;
@@ -33,6 +34,7 @@
     --white-color: #ffffff;
     --black-color: #000000;
     --faded-gray: #575757;
+    --red-danger: #E50004;
     --default-bg-color: var(--light-color);
     --default-text-color: var(--dark-color);
     --header-bg-color: var(--dark-blue);
@@ -213,15 +215,17 @@ footer {
     }
 }
 
-
+.main-page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    margin: clamp(1rem, 5vw, 3rem) 0 clamp(0.5rem, 5vw, 2rem) 0;
+}
 /* =========================================
     Shared Components
 ========================================= */
-
 /* Phone icon */
-
 .phone-icon {
-    position:relative;
+    position: relative;
     display: inline-block;
     background-color: var(--primary-color);
     border-radius: 9999px;
@@ -234,10 +238,10 @@ footer {
     padding: 0.4rem;
 
     &::before {
-        top:50%;
-        left:50%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        position:absolute;
+        position: absolute;
         font-family: "Font Awesome 7 Pro";
         font-size: 1rem;
         color: var(--black-color);
@@ -472,6 +476,14 @@ footer {
 
 /* Logo title */
 
+.logo-title-section {
+    width: 100%;
+    padding: 0 1rem;
+    @media (width <= 768px) {
+        padding: 0 0.5rem;
+    }
+}
+
 .logo-title {
     display: flex;
     justify-content: space-between;
@@ -482,13 +494,11 @@ footer {
     background-color: var(--primary-color);
     padding: 2rem 3rem;
     border-radius: 20px;
-    margin: 0 1rem;
 
     @media (width <= 768px) {
         flex-direction: column-reverse;
         gap: 3rem;
-        padding:1rem;
-        margin: 0 0.5rem;
+        padding: 1rem;
     }
 }
 
@@ -649,7 +659,7 @@ footer {
     &:hover {
         transform: scale(1.07);
         }
-    }
+}
 
 .line {
     height: 1px;
@@ -1201,7 +1211,9 @@ header {
     padding: 0.7rem 1.05rem;
     font-size: 0.84rem; 
     width: 100%;
-
+    @media(width >= 768px){
+        padding: 1rem 1.5rem;
+    }
 }
 
 /* =========================================
@@ -1339,13 +1351,17 @@ header {
 .contact-customer-service-contact-section {
     padding: 1rem;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-direction: column;
     gap: 1.5rem;
 
     @media(width >= 768px) {
         min-width: 508px;
-        padding: 0 3rem;
+        padding: 0 3rem 2rem 3rem;
+    }
+
+    @media(width >= 1040px) {
+        padding: 0 3rem 0rem 3rem;
     }
 }
 .contact-customer-service-contact-section-paragraph{
@@ -1375,7 +1391,7 @@ header {
 }
 
 .contact-customer-service-form-section {
-    display: flex;
+    display: inline-flex;
     gap: 0.5rem;
 
     @media(width >= 768px) {
@@ -1387,4 +1403,222 @@ header {
     gap:0.4rem;
     align-items:center;
     justify-content:center;
+}
+
+/*
+    About Me Form
+*/
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 1340px;
+
+    @media(width > 1200px) {
+        padding: 1rem;
+        align-items: start;
+        flex-direction: row;
+    }
+}
+
+.about-me-form {
+    display: flex;
+    align-items:end;
+    width: 100%;
+    gap: 1.5rem;
+    flex-direction: column;
+    background-color: var(--white-color);
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+
+    @media(width >= 768px){
+        padding: 3rem 2.5rem;
+    }
+}
+
+.about-me-form-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin:0;
+    line-height:0.8;
+    width:100%;
+    text-align: start;
+}
+
+.custom-file-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px; 
+}
+
+.hidden-file-input {
+    display:none;
+    opacity:0;
+}
+
+.custom-file-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--light-color);
+    border-radius: 7px;
+    padding: 0.3rem 0.6rem 0.3rem 1.5rem;
+    cursor: pointer;
+
+    @media(width <= 768px) {
+        padding: 0.3rem 0.6rem 0.3rem 1rem;
+    }
+}
+
+.placeholder-text {
+    color: #757575;
+    font-size: 0.875rem;
+}
+
+.browse-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-light-gray);
+    color: var(--dark-color);
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    white-space: nowrap;
+
+    @media(width <= 768px) {
+        padding: 0.4rem 1.2rem;
+    }
+}
+
+/*
+    Wrapper
+*/
+
+.about-me-menu-wrapper{
+    display:flex;
+    gap:2rem;
+    flex-direction: column;
+}
+
+/*
+    Account Menu Options
+*/
+
+.account-menu-options{
+    display:flex;
+    flex-direction: column;
+    border-radius:20px
+}
+.account-menu-options-title {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    @media(width >= 768px) {
+        padding: 1.2rem 2rem;
+    }
+}
+.account-menu-options-list {
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 20px;
+}
+.account-menu-options-item {
+    width: 100%;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    white-space: nowrap;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10rem;
+    transition: opacity ease-out 0.3s;
+    position: relative;
+
+    @media(width >= 768px) {
+        padding: 1.2rem 2rem;
+    }
+
+    &.account-menu-options-item-active {
+        color: var(--primary-color);
+    }
+
+    &.account-menu-options-item-last {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    &::after {
+        content: "\f054";
+        font-family: "Font Awesome 7 Pro";
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        transform: translateX(0);
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &.account-menu-options-item-border::before {
+        height: 1px;
+        content: "";
+        margin: 0 1rem;
+        background-color: var(--light-gray);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        @media(width >= 768px) {
+            margin: 0 2rem;
+        }
+    }
+
+    .account-menu-options-item-link {
+        color: var(--black-color);
+
+        &.account-menu-options-item-active {
+            color: var(--primary-color);
+        }
+    }
+}
+
+/*
+    Delete Account Section
+*/
+.delete-account{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+}
+.delete-account-warning-text {
+    font-size: 0.625rem;
+    text-align:center;
+    color:var(--dark-color);
+}
+.delete-account-link {
+    color: var(--red-danger);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align:center;
+}
+
+.account-image-container{
+    border-radius:20px;
+    overflow:hidden;
+}
+.account-image{
+    object-fit: cover;
+    aspect-ratio: 1/1;
 }

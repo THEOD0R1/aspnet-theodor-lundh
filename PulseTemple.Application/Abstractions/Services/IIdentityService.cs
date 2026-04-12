@@ -1,4 +1,5 @@
 ﻿using PulseTemple.Application.Abstractions.Users;
+using PulseTemple.Application.Dtos.Identity;
 using PulseTemple.Application.Dtos.Results;
 
 namespace PulseTemple.Application.Abstractions.Services;
@@ -15,5 +16,5 @@ public interface IIdentityService
     
     Task<bool> DeleteByIdAsync(Guid userId);
     Task<bool> FindExistingEmailAsync(string email);
-    Task<bool> UpdatePhoneNumberByIdAsync(Guid userId, string phoneNumber);
+    Task<bool> UpdateBydIdAsync(Guid userId, UpdateAccountDetails accountDetails);
 }

@@ -7,6 +7,8 @@ using PulseTemple.Web.Services.MenuNavigation;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseStaticWebAssets();
+
 builder.Services.AddControllersWithViews(options =>
     options.Conventions.Add(new RouteTokenTransformerConvention(new MenuUrlRewriter())));
 

@@ -8,6 +8,7 @@ using PulseTemple.Web.Models.Authentications.Register.Password;
 
 namespace PulseTemple.Web.Controllers;
 
+
 public class AuthenticationController(IIdentityService auth) : Controller
 {
     private const string RegisterEmailSessionKey = "RegisterEmailAddress";
@@ -104,7 +105,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
             return View(form);
         }
         
-        return RedirectToAction("Index", "Profile");
+        return RedirectToAction("Index", "Account");
     }
     [HttpPost]
     public new async Task<IActionResult> SignOut()
@@ -124,7 +125,7 @@ public class AuthenticationController(IIdentityService auth) : Controller
                 return RedirectToAction("Index", "AdminDashboard");
 
             if (User.IsInRole("Member"))
-                return RedirectToAction("Index", "Profile");
+                return RedirectToAction("Index", "Account");
 
             return null;
         }
