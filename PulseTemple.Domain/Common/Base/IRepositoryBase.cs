@@ -1,0 +1,10 @@
+﻿namespace PulseTemple.Domain.Common.Base;
+
+public interface IRepositoryBase<TModel, TId>
+{
+    Task<TModel> AddAsync(TModel model, CancellationToken ct);
+    Task<TModel> UpdateAsync(TId id, TModel updatedModel, CancellationToken ct);
+    Task<bool> RemoveAsync(TId id, CancellationToken ct);
+    Task<TModel?> GetAsyncById(TId id, CancellationToken ct);
+    Task<IReadOnlyList<TModel>> GetAllAsync(CancellationToken ct);
+}

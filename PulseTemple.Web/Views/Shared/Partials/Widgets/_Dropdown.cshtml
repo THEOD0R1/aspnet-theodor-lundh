@@ -1,0 +1,45 @@
+﻿@using PulseTemple.Web.Models.Dropdowns;
+@{
+    var id = Guid.NewGuid().ToString();
+    int index = 0;
+}
+
+@model IReadOnlyCollection<DropdownItem>
+
+<section class="dropdown-container">
+    <ul class="dropdown-list-container">
+        @foreach(var item in Model)
+        {
+            <li class="dropdown-item">
+                <button onclick="showDropdown(@index, '@id')"
+                        id="dropdown-btn-@index-@id"
+                        class="dropdown-btn">
+                    <h4 class="dropdown-btn-title">
+                        <span class="dropdown-number">@item?.Number</span> 
+                        @item?.Title
+                    </h4>
+                </button>
+                <hr class="dropdown-hr" />
+
+                <section class="dropdown-content dropdown-content-@id">
+                    <p class="dropdown-content-text">
+                       @item?.Content?.Description
+                    </p>
+                    <ul class="dropdown-content-list">
+                        @if(item?.Content?.ContentList?.Any() == true)
+                        {
+                            @foreach(var point in item.Content.ContentList ?? [])
+                            {
+                                <li class="dropdown-content-item">
+                                    @point
+                                </li>
+                            }
+                        }
+                    </ul>
+                </section>
+            </li>
+
+            index++;
+        }
+    </ul>
+</section>

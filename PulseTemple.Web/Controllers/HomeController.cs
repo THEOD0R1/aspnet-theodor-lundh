@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PulseTemple.Web.Attributes.MenuNavigation;
 
-namespace PulseTemple.Web.Controllers
+namespace PulseTemple.Web.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    [HideInMenu]
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }

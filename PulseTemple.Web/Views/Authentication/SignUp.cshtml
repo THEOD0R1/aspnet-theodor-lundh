@@ -1,0 +1,40 @@
+﻿@using PulseTemple.Web.Models.Authentications.Register;
+@using PulseTemple.Web.Models.Authentications;
+
+@model RegisterEmailForm
+
+@{
+    Layout = "Layouts/_AuthLayout";
+
+    ViewData["Title"] = "Become a Member";
+
+    var authTextBlockTitle = new AuthTextBlockViewModel("Become a Member", "Sign up to continue your fitness journey with full access to your customized program, training history, and progress tracking. Stay consistent, monitor your development, and keep moving forward with the structure and support built into your account.");
+
+    var externallLoginData = new ExternallLoginsViewModel(authTextBlockTitle);
+}
+
+<section class="sign-up">
+
+    <div class="sign-up-container">
+        <partial name="Partials/Authentications/_ExternallLogins" model="@externallLoginData"/>
+
+        <form id="signUpForm" method="post" class="sign-up-form" asp-action="SignUp" asp-controller="Authentication" novalidate>
+
+            <div class="sign-up-input-container">
+                <label class="sign-up-email-label" asp-for="Email">Email Address</label>
+                <input autocomplete="off" class="sign-up-email-input" asp-for="Email" />
+                <span class="warning" asp-validation-for="Email"></span>
+            </div>
+
+            <button type="submit" class="primary-btn wider-btn">Continue</button>
+            @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+            {
+                <div class="field-validation-error">
+                    @ViewData["ErrorMessage"]?.ToString()
+                </div>
+            }
+        </form>
+        <p class="sign-up-notice">We will send a verification code to your email address.</p>
+
+    </div>
+</section>

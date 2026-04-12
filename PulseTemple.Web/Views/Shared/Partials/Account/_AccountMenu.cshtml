@@ -1,0 +1,56 @@
+﻿@using PulseTemple.Web.Models.Account
+@model AboutMeViewModel
+@{
+    var aboutMe = new AccountMenuOptionItem
+    {
+        Name = "About Me",
+        Action = "AboutMe",
+        Controller = "Account"
+    };
+
+    var membership = new AccountMenuOptionItem
+    {
+        Name = "My Membership",
+        Action = "Index",
+        Controller = "Memberships"
+    }; 
+
+    var bookings = new AccountMenuOptionItem
+    {
+        Name = "My Bookings",
+        Action = "",
+        Controller = ""
+    }; 
+
+    var signOut = new AccountMenuOptionItem
+    {
+        Name = "Sign Out",
+        Action = "SignOut",
+        Controller = "Account"
+    };
+
+    var menuOptions = new AccountMenuOptionsViewModel
+    {
+        Title = "Menu Options",
+        AccountOptionItems =
+        [
+            aboutMe,
+            membership,
+            bookings,
+            signOut
+        ]
+    };
+}
+
+<section class="about-me-menu-wrapper">
+    <div class="account-image-container">
+        <img class="account-image" src="@Model?.ProfileImageUrl" alt="Profile picture" />
+    </div>
+
+    <partial name="Partials/Account/_AccountMenuOptions" model="menuOptions" />
+
+    <section class="delete-account">
+        <span class="delete-account-warning-text">If you like to cancel your account click below</span>
+        <a class="delete-account-link" asp-action="RemoveAccount" asp-controller="Account">Remove Account</a>
+    </section>
+</section>

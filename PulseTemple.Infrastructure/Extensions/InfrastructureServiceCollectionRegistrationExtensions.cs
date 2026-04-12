@@ -14,6 +14,7 @@ public static class InfrastructureServiceCollectionRegistrationExtensions
         ArgumentNullException.ThrowIfNull(env);
 
         services.AddPersistence(configuration, env);
+        services.AddWebSession();
 
         return services;
     }

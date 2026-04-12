@@ -1,0 +1,38 @@
+﻿
+    <section class="header-section">
+            <partial name="Partials/Logos/_CompanyLogoLink" />
+        <nav id="mainNav" class="main-nav">
+            <partial name="Partials/Headers/_HeaderMenuList" />
+        </nav>
+        <button aria-label="Menu button" id="menuBtn">
+            Menu
+        </button>
+        <nav class="account-nav">
+            <ul class="account-menu">
+
+            @if(User.Identity?.IsAuthenticated == true)
+            {
+                <li class="account-menu-sign-up">
+                    <a asp-controller="Authentication" asp-action="SignUp" class="menu-item">Our Classes</a>
+                </li>
+                <li>
+                    <a asp-controller="Account" asp-action="AboutMe" class="primary-btn">
+                        My Account
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="account-menu-sign-up">
+                    <a asp-controller="Authentication" asp-action="SignUp" class="menu-item">Become Member</a>
+                </li>
+                <li>
+                    <a asp-controller="Authentication" asp-action="SignIn" class="primary-btn">
+                        Sign In
+                    </a>
+                </li>
+            }
+               
+            </ul>
+        </nav>
+    </section>

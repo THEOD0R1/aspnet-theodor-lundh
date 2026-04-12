@@ -10,8 +10,8 @@ public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntit
     {
         builder.ToTable("Users");
 
-        builder.Property(e => e.FirstName).HasMaxLength(100).IsRequired();
-        builder.Property(e => e.LastName).HasMaxLength(100).IsRequired();
+        builder.Property(e => e.FirstName).HasMaxLength(100);
+        builder.Property(e => e.LastName).HasMaxLength(100);
         
         builder.Property(e => e.MembershipId).IsRequired(false);
 
@@ -23,4 +23,3 @@ public sealed class UserEntityConfiguration : IEntityTypeConfiguration<UserEntit
        .OnDelete(DeleteBehavior.SetNull);
     }
 }
-
