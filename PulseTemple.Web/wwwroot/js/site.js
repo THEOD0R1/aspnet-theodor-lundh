@@ -32,3 +32,17 @@ function showDropdown(index, id) {
     dropdown?.classList.toggle("dropdown-content-open");
     btn?.classList.toggle("active-dropdown-btn");
 }
+
+document.getElementById("about-form-file-input").addEventListener("change", function (e) {
+    const fileNameDisplay = document.getElementById("file-name-display");
+
+    if (this.files && this.files.length > 0) {
+        const fileName = this.files[0].name;
+        fileNameDisplay.textContent = fileName;
+
+        fileNameDisplay.style.color = "var(--dark-color)";
+    } else {
+        fileNameDisplay.textContent = "Upload Profile Image";
+        fileNameDisplay.style.color = "#757575";
+    }
+});

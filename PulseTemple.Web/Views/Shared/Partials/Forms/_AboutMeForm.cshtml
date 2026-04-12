@@ -1,0 +1,43 @@
+﻿@using PulseTemple.Web.Models.Account;
+@model AboutMeViewModel
+
+@{
+}
+<form class="about-me-form" enctype="multipart/form-data" method="post" asp-action="AboutMe" asp-controller="Account" novalidate>
+    <h2 class="about-me-form-title">About Me</h2>
+    <hr class="externall-logins-divider" />
+    <div class="sign-up-input-container">
+        <label class="standard-label asterix" asp-for="AboutMeForm.FirstName"></label>
+        <input autocomplete="off" class="sign-up-email-input" asp-for="AboutMeForm.FirstName" />
+        <span class="warning" asp-validation-for="AboutMeForm.FirstName"></span>
+    </div>
+    <div class="sign-up-input-container">
+        <label class="standard-label asterix" asp-for="AboutMeForm.LastName"></label>
+        <input autocomplete="off" class="sign-up-email-input" asp-for="AboutMeForm.LastName" />
+        <span class="warning" asp-validation-for="AboutMeForm.LastName"></span>
+    </div>
+    <div class="sign-up-input-container">
+        <label class="standard-label asterix" asp-for="AboutMeForm.Email"></label>
+        <input autocomplete="off" class="sign-up-email-input" asp-for="AboutMeForm.Email" />
+        <span class="warning" asp-validation-for="AboutMeForm.Email"></span>
+    </div>
+    <div class="sign-up-input-container">
+        <label class="standard-label" asp-for="AboutMeForm.PhoneNumber"></label>
+        <input autocomplete="off" class="sign-up-email-input" asp-for="AboutMeForm.PhoneNumber" />
+        <span class="warning" asp-validation-for="AboutMeForm.PhoneNumber"></span>
+    </div>
+
+    <hr class="externall-logins-divider" />
+        
+    <div class="sign-up-input-container">
+        <label class="standard-label" asp-for="AboutMeForm.ProfileImage"></label>
+        <input asp-for="AboutMeForm.ProfileImage" id="about-form-file-input" class="hidden-file-input" />
+        <label asp-for="AboutMeForm.ProfileImage" for="about-form-file-input" class="custom-file-label">
+            <span id="file-name-display" class="placeholder-text">Upload Profile Image</span>
+            <span class="browse-button">Browse</span>
+        </label>
+        <span class="warning" asp-validation-for="AboutMeForm.ProfileImage"></span>
+    </div>
+
+    <button type="submit" class="primary-btn">Save</button>
+</form>

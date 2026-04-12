@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PulseTemple.Application.Abstractions.Services;
 using PulseTemple.Application.Abstractions.Users;
+using PulseTemple.Application.Dtos.Identity;
 using PulseTemple.Application.Dtos.Results;
 using PulseTemple.Infrastructure.Persistence.Models;
 
@@ -51,6 +52,7 @@ public class IdentityService(UserManager<UserEntity> userManager, SignInManager<
             MembershipId: user?.MembershipId,
             FirstName: user?.FirstName,
             LastName: user?.LastName,
+            ImageUrl: user?.ImageUrl,
             Email: user?.Email,
             PhoneNumber: user?.PhoneNumber,
             Membership: null
@@ -107,8 +109,22 @@ public class IdentityService(UserManager<UserEntity> userManager, SignInManager<
         return new RegisterResult(true, ["User was created"], user.Id);
     }
 
-    public Task<bool> UpdatePhoneNumberByIdAsync(Guid userId, string phoneNumber)
+    public async Task<bool> UpdateBydIdAsync(Guid userId, UpdateAccountDetails accountDetails)
     {
-        throw new NotImplementedException();
+        var userExists = userManager.FindByIdAsync(userId.ToString());
+
+        if(userExists.Result is null) return false;
+
+        var userResult = userExists.Result;
+
+        userResult.FirstName = accountDetails.FirstName;
+        userResult.LastName = accountDetails.LastName;
+        userResult.Email = accountDetails.Email;
+        userResult.PhoneNumber = accountDetails?.PhoneNumber;
+        userResult.ImageUrl = accountDetails?.ImageUrl;
+
+        var result = await userManager.UpdateAsync(userResult);
+
+        return result.Succeeded;
     }
 }

@@ -6,6 +6,7 @@ public record UserDetails
     Guid? MembershipId,
     string? FirstName,
     string? LastName,
+    string? ImageUrl,
     string? Email,
     string? PhoneNumber,
     MembershipDetails? Membership = null
