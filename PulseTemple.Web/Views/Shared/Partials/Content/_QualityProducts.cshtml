@@ -1,0 +1,28 @@
+﻿@using PulseTemple.Web.Models.Content;
+
+@model QualityProductsViewModel
+
+@{
+}
+<section class="quality-products-section">
+    <span class="small-title">
+        <span class="green-circle-icon"></span>
+        Our Store
+    </span>
+    <h2 class="quality-products-title">
+        High quality fitness products
+        built for results
+    </h2>
+    <ul class="quality-products-list">
+        @if(Model.ImgContentList is not null)
+        {
+            foreach (var item in Model.ImgContentList)
+            {
+                <li class="quality-products-list-item">
+                    <img class="quality-products-list-item-img" src="@item?.Src" alt="@item?.Alt" />
+                </li>
+            }
+        }
+    </ul>
+    <span class="quality-products-small-text">Let's make something great work together. Get Free Quote</span>
+</section>

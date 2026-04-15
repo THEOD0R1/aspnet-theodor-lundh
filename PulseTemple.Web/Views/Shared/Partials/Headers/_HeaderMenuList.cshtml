@@ -2,6 +2,8 @@
     var menu = MenuNavigationService.GetMenu();
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+
+    var dropDownIndex = 0;
 }
 <ul class="main-menu">
     @foreach (var item in menu)
@@ -28,12 +30,20 @@
         }
         else
         {
-            <li class="menu-item dropdown @(isDropdownActive ? "active" : "")">
-                <span class="dropdown-trigger">
-                    @item.DisplayName
-                </span>
+            dropDownIndex++;
 
-                <ul class="dropdown-list">
+            <li class="menu-item dropdown @(isDropdownActive ? "active" : "")">
+                <button class="dropdown-trigger" onclick='toggleClassOnClick([
+                    {
+                        elementId: "dropdown-list-@dropDownIndex", 
+                        classToAdd: "dropdown-list-open"
+                    }], 
+                    @dropDownIndex,
+                    "menu-item-dropdown-@dropDownIndex")'>
+                    @item.DisplayName
+                </button>
+
+                <ul id="dropdown-list-@dropDownIndex" class="dropdown-list">
                     @foreach (var child in item.Children)
                     {
                         var isChildActive =
