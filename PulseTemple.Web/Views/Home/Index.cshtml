@@ -1,7 +1,30 @@
-﻿@section HeaderHero
+﻿@using PulseTemple.Web.Models.Content
+
+@{
+    var qualityProductImgItem1 = new QualityProductsImg("/images/product-image-1-prime.png", "Dumbell");
+    var qualityProductImgItem2 = new QualityProductsImg("/images/product-image-2-prime.png", "Bag");
+    var qualityProductImgItem3 = new QualityProductsImg("/images/product-image-3-prime.png", "Smar watch");
+    var qualityProductImgItem4 = new QualityProductsImg("/images/product-image-4-prime.png", "Treadmill");
+
+    var qualityProductData = new QualityProductsViewModel(
+        "Our Store",
+        "High quality fitness products built for results", 
+        [
+            qualityProductImgItem1, 
+            qualityProductImgItem2,
+            qualityProductImgItem3,
+            qualityProductImgItem4
+        ], 
+        "Let's make something great work together. Get Free Quote"
+    );
+}
+
+@section HeaderHero
 {
     <partial name="Partials/Headers/_HeaderHeroSection" />
 }
 <partial name="Partials/Content/_LogoTitle" />
 
 <partial name="Partials/Content/_TrainingProgramImages" />
+
+<partial name="Partials/Content/_QualityProducts" model="qualityProductData" />
